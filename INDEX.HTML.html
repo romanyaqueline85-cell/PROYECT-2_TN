@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Día Mamá María</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe5f0 50%, #fff0f8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hearts-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffb3d9;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ffb3d9;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .card-container {
+            position: relative;
+            z-index: 2;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 450px;
+            height: 600px;
+            background: linear-gradient(145deg, #fff5fb 0%, #ffe9f5 100%);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 182, 217, 0.4);
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: cardEntry 1s ease-out;
+            border: 3px solid rgba(255, 192, 228, 0.3);
+        }
+
+        @keyframes cardEntry {
+            from {
+                transform: scale(0.8) rotateY(-30deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotateY(0);
+                opacity: 1;
+            }
+        }
+
+        .decoration-top {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ffb3d9, #ffd6ea);
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+
+        .flower {
+            position: absolute;
+            font-size: 40px;
+            animation: rotate 10s linear infinite;
+        }
+
+        .flower:nth-child(1) {
+            top: 20px;
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .flower:nth-child(2) {
+            top: 20px;
+            right: 20px;
+            animation-delay: 2s;
+        }
+
+        .flower:nth-child(3) {
+            bottom: 30px;
+            left: 30px;
+            animation-delay: 4s;
+        }
+
+        .flower:nth-child(4) {
+            bottom: 30px;
+            right: 30px;
+            animation-delay: 6s;
+        }
+
+        @keyframes rotate {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+        }
+
+        .title {
+            font-size: 36px;
+            color: #d946a6;
+            margin-bottom: 20px;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(217, 70, 166, 0.2);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .name {
+            font-size: 48px;
+            color: #ff69b4;
+            margin: 30px 0;
+            font-weight: bold;
+            font-family: 'Brush Script MT', cursive;
+            animation: glow 3s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+            }
+        }
+
+        .message {
+            font-size: 20px;
+            color: #9b4d82;
+            line-height: 1.8;
+            margin: 30px 0;
+            font-style: italic;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart-big {
+            font-size: 80px;
+            color: #ff69b4;
+            margin: 30px 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.4));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.1);
+            }
+        }
+
+        .footer {
+            font-size: 16px;
+            color: #b85c9e;
+            margin-top: 20px;
+            animation: fadeIn 3s ease-in;
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                width: 90%;
+                height: auto;
+                padding: 40px 30px;
+            }
+            
+            .title {
+                font-size: 28px;
+            }
+            
+            .name {
+                font-size: 36px;
+            }
+            
+            .message {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-background" id="heartsContainer"></div>
+    
+    <div class="card-container">
+        <div class="card">
+            <div class="decoration-top"></div>
+            <div class="flower">🌸</div>
+            <div class="flower">🌺</div>
+            <div class="flower">🌷</div>
+            <div class="flower">🌹</div>
+            
+            <div class="title">¡Feliz Día de la Madre!</div>
+            
+            <div class="name">María</div>
+            
+            <div class="heart-big">❤️</div>
+            
+            <div class="message">
+                "Una madre es quien puede tomar el lugar de todos los demás, pero cuyo lugar nadie más puede tomar"
+            </div>
+            
+            <div class="footer">
+                Con todo mi amor y gratitud ✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const heartsContainer = document.getElementById('heartsContainer');
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 20000);
+        }
+        
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 1000);
+        }
+        
+        setInterval(createHeart, 2000);
+    </script>
+</body>
+</html>
